@@ -14,7 +14,7 @@ router.post('/roombamatize', (req, res) => {
 
 	let promises = annotators
 		.filter(ann => userAnnotators[ann.key] != undefined)
-		.map(ann => ann.annotate(nodeType, nodeId, content, contentType, userAnnotators[ann.key].credentials))
+		.map(ann => ann.annotate(nodeType, nodeId, content, contentType, userAnnotators[ann.key]))
 
 	Promise.all(promises)
 		.then(values => res.json({

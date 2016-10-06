@@ -122,11 +122,11 @@ function keywordize(nodeType, nodeId, keywords) {
 			MERGE (d)-[r:HAS_KEYWORD {
 				score: ${keyword.relevance},
 				sentiment: ${keyword.sentiment.score || 0}
-				anger:  ${keyword.emotions ? entity.emotions.anger : -1},
-				disgust: ${keyword.emotions ? entity.emotions.disgust : -1},
-				fear: ${keyword.emotions ? entity.emotions.fear : -1},
-				joy: ${keyword.emotions ? entity.emotions.joy : -1},
-				sadness: ${keyword.emotions ? entity.emotions.sadness : -1}
+				anger:  ${keyword.emotions ? keyword.emotions.anger : -1},
+				disgust: ${keyword.emotions ? keyword.emotions.disgust : -1},
+				fear: ${keyword.emotions ? keyword.emotions.fear : -1},
+				joy: ${keyword.emotions ? keyword.emotions.joy : -1},
+				sadness: ${keyword.emotions ? keyword.emotions.sadness : -1}
 			}]->(k)`)
 
 		if(keyword.knowledgeGraph === undefined)
