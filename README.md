@@ -36,7 +36,7 @@ graph.cypher.execute('MERGE (n:test {id: "Barack Obama"})')
 # the final field is `annotators`. this is a dictionary of services and the value is the copy-pasted
 # service credentials provided by bluemix.
 # you can supply any subset of the available annotators
-rsp = requests.post("http://toomba.mybluemix.net/cypher/roombamatize", json={
+rsp = requests.post("http://<your ip>/cypher/roombamatize", json={
     "nodeType": "test",
     "nodeId": "Barack Obama",
     "content": "Barack Obama is the president of the united states.",
@@ -61,4 +61,4 @@ tx.commit()
 print("done")
 ```
 
-![schema](https://github.ibm.com/watson-prototypes/toomba/blob/master/pictures/schema.png)
+![schema](https://github.com/cognitive-catalyst/toomba/blob/master/pictures/schema.png)
