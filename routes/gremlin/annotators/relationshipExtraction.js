@@ -1,14 +1,14 @@
-const re = require('../../../lib/relationship-extraction');
 const axios = require('axios')
+const re = require('../../../lib/relationship-extraction');
 
-function annotate(nodeType, nodeId, content, contentType) {
+function annotate(nodeType, nodeId, content, contentType, credentials) {
 
 	if (contentType !== "text") {
 		return new Promise((resolve, reject) => resolve([]));
 	}
 
 	console.time('sire_request');
-	return re.annotate(content).then(mentions => {
+	return re.annotate(content, credentials).then(mentions => {
 		console.timeEnd('sire_request');
 		return convert(mentions, nodeType, nodeId, content)
 	}).catch(err => {
@@ -61,4 +61,7 @@ function convert(output, nodeType, nodeId, content) {
 	return transactions;
 }
 
-module.exports = annotate;
+module.exports = {
+	key: 'relationship-extraction',
+	annotate
+};

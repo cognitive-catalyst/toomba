@@ -92,11 +92,11 @@ function entitize(nodeType, nodeId, entities) {
 			MERGE (n)-[r:HAS_ENTITY {
 					score: ${entity.relevance},
 					sentiment: ${entity.sentiment.score || 0},
-					anger:  ${entity.emotions ? entity.emotions.anger || -1},
-					disgust: ${entity.emotions ? entity.emotions.disgust || -1},
-					fear: ${entity.emotions ? entity.emotions.fear || -1},
-					joy: ${entity.emotions ? entity.emotions.joy || -1},
-					sadness: ${entity.emotions ? entity.emotions.sadness || -1}
+					anger:  ${entity.emotions ? entity.emotions.anger : -1},
+					disgust: ${entity.emotions ? entity.emotions.disgust : -1},
+					fear: ${entity.emotions ? entity.emotions.fear : -1},
+					joy: ${entity.emotions ? entity.emotions.joy : -1},
+					sadness: ${entity.emotions ? entity.emotions.sadness : -1}
 			}]->(e)`)
 
 		if(entity.knowledgeGraph === undefined)
@@ -122,11 +122,11 @@ function keywordize(nodeType, nodeId, keywords) {
 			MERGE (d)-[r:HAS_KEYWORD {
 				score: ${keyword.relevance},
 				sentiment: ${keyword.sentiment.score || 0}
-				anger:  ${keyword.emotions ? entity.emotions.anger || -1},
-				disgust: ${keyword.emotions ? entity.emotions.disgust || -1},
-				fear: ${keyword.emotions ? entity.emotions.fear || -1},
-				joy: ${keyword.emotions ? entity.emotions.joy || -1},
-				sadness: ${keyword.emotions ? entity.emotions.sadness || -1}
+				anger:  ${keyword.emotions ? entity.emotions.anger : -1},
+				disgust: ${keyword.emotions ? entity.emotions.disgust : -1},
+				fear: ${keyword.emotions ? entity.emotions.fear : -1},
+				joy: ${keyword.emotions ? entity.emotions.joy : -1},
+				sadness: ${keyword.emotions ? entity.emotions.sadness : -1}
 			}]->(k)`)
 
 		if(keyword.knowledgeGraph === undefined)

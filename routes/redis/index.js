@@ -9,7 +9,11 @@ router.post('/roombamatize', (req, res) => {
     const content       = req.body.content;
     const contentType   = req.body.contentType || 'text';
 
-    let promises = annotators.map(ann => ann(inputKey, content, contentType))
+    const userAnnotators = req.body.annotators; // { alchemy: { apikey: '', url: '' }, relExtract: { username: '', etc}
+
+    let promises = annotators
+        .filter(ann => userAnnotators[ann.key] != undefined)
+        .map(ann => ann(inputKey, content, contentType, userAnnotators[ann.key]))
 
     Promise.all(promises)
         .then(values => res.json({

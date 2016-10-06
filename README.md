@@ -6,7 +6,7 @@ The input data is fed through a series of annotators, and the output of the anno
 - Annotators:
   - Current:
     - AlchemyAPI
-    - Concept Insights
+    - Concept Insights -- now defunct :(
     - SIRE
 - Query Languages:
   - Current:
@@ -33,11 +33,15 @@ graph.cypher.execute('MERGE (n:test {id: "Barack Obama"})')
 
 # only need to supply nodeType, nodeId, and content. contentType is text by default
 # contentType URL and HTML are also supported.
+# the final field is `annotators`. this is a dictionary of services and the value is the copy-pasted
+# service credentials provided by bluemix.
+# you can supply any subset of the available annotators
 rsp = requests.post("http://toomba.mybluemix.net/cypher/roombamatize", json={
     "nodeType": "test",
     "nodeId": "Barack Obama",
     "content": "Barack Obama is the president of the united states.",
-    "contentType": "text"
+    "contentType": "text",
+    "annotators": {"alchemy": { "apikey": "here" }, "relationship-extraction": { "username": "", "password": "" }}
 })
 
 # response is given as a json object with fields 'status' 'message' and 'transactions' which is an array of transactions.

@@ -1,11 +1,8 @@
-const constants = require('../../../constants')
 const alchemy   = require('../../../lib/alchemy')
-
-alchemy.init(constants.alchemy_key, constants.alchemy_keys);
 
 const redisClean = str => str.replace(/' '/g, '_');
 
-function annotate(inputKey, content, contentType) {
+function annotate(inputKey, content, contentType, credentials) {
     console.time('alchemy_request')
     return alchemy.getAllTheThings(content, contentType=contentType)
         .then(data => {
@@ -109,4 +106,7 @@ function taxonomize(inputKey, taxonomies) {
     return transactions;
 }
 
-module.exports = annotate;
+module.exports = {
+    key: 'alchemy',
+    annotate
+};

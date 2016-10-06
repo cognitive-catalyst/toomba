@@ -24,9 +24,7 @@
   "dependencies": {
     "axios": "^0.9.1",
     "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "lodash": "^4.11.1",
-    "neo4j": "^2.0.0-RC2"
+    "express": "^4.13.3"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.2",
@@ -36,6 +34,8 @@
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
     "eslint": "^1.6.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "neo4j": "^2.0.0-RC2",
+    "lodash": "^4.11.1"
   }
 }

@@ -4,6 +4,6 @@ const alchemyAnnotator = require('./alchemy');
 
 module.exports = [
 	alchemyAnnotator,
-	conceptInsightsAnnotator,
+//	conceptInsightsAnnotator,
 //    relationshipExtractionAnnotator
 ];

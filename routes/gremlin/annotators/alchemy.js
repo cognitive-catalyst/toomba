@@ -1,7 +1,4 @@
-const constants = require('../../../constants')
 const alchemy = require('../../../lib/alchemy')
-
-alchemy.init(constants.alchemy_key, constants.alchemy_keys);
 
 function annotate(nodeType, nodeId, content, contentType) {
 	console.time('alchemy_request');
@@ -396,4 +393,7 @@ function knowledgeGraphize(rootType, rootId, types) {
 	return transactions;
 }
 
-module.exports = annotate;
+module.exports = {
+	key: 'alchemy',
+	annotate
+};
